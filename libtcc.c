@@ -1609,6 +1609,7 @@ enum {
     TCC_OPTION_I,
     TCC_OPTION_D,
     TCC_OPTION_U,
+    TCC_OPTION_P,
     TCC_OPTION_L,
     TCC_OPTION_B,
     TCC_OPTION_l,
@@ -1691,6 +1692,7 @@ static const TCCOption tcc_options[] = {
     { "w", TCC_OPTION_w, 0 },
     { "pipe", TCC_OPTION_pipe, 0},
     { "E", TCC_OPTION_E, 0},
+    { "P", TCC_OPTION_P, 0},
     { "MD", TCC_OPTION_MD, 0},
     { "MF", TCC_OPTION_MF, TCC_OPTION_HAS_ARG },
     { "x", TCC_OPTION_x, TCC_OPTION_HAS_ARG },
@@ -1865,6 +1867,9 @@ PUB_FUNC int tcc_parse_args(TCCState *s, int argc, char **argv)
             break;
         case TCC_OPTION_E:
             s->output_type = TCC_OUTPUT_PREPROCESS;
+            break;
+        case TCC_OPTION_P:
+            s->pflag = 1;
             break;
         case TCC_OPTION_MD:
             s->gen_deps = 1;

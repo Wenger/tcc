@@ -3111,7 +3111,9 @@ print_line:
                   : ""
                   ;
                 iptr = iptr_new;
-                fprintf(s1->ppfp, "# %d \"%s\"%s\n", file->line_num, file->filename, s);
+                if (tcc_state->pflag == 0) {
+                    fprintf(s1->ppfp, "# %d \"%s\"%s\n", file->line_num, file->filename, s);
+                }
             } else {
                 while (d)
                     fputs("\n", s1->ppfp), --d;

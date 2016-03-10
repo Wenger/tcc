@@ -583,6 +583,7 @@ struct TCCState {
 
     /* output file for preprocessing (-E) */
     FILE *ppfp;
+    int pflag;
 
     /* for -MD/-MF: collected dependencies for this compilation */
     char **target_deps;
